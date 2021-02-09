@@ -1,3 +1,4 @@
+del *.nsp
 make clean
 make
 cp *.nacp ./hacBrewPack/control/control.nacp
