@@ -43,9 +43,11 @@ SOURCES		:=	source source/ui source/data source/install source/nx source/nx/ipc 
 DATA		:=	data
 INCLUDES	:=	include include/ui include/data include/install include/nx include/nx/ipc include/util include/Plutonium/Plutonium/Output-switch/include
 APP_TITLE	:=	AtmoXL Titel Installer
-APP_AUTHOR	:=	AtmoXL - forked from Awoo Installer by Huntereb & Behemoth
+APP_AUTHOR	:=	dezem
 APP_VERSION	:=	1.4.2
+APP_TITLEID :=  05D2900A49430000
 ROMFS		:=	romfs
+EXEFS_SRC	:=	exefs_src
 
 #---------------------------------------------------------------------------------
 # options for code generation
@@ -196,24 +198,20 @@ DEPENDS	:=	$(OFILES:.o=.d)
 #---------------------------------------------------------------------------------
 # main targets
 #---------------------------------------------------------------------------------
-ifeq ($(strip $(APP_JSON)),)
+all	: $(OUTPUT).pfs0 $(OUTPUT).nro
 
-all	:	$(OUTPUT).nro
+ifeq ($(strip $(APP_JSON)),)
+$(OUTPUT).pfs0	:	$(OUTPUT).nso
+else
+$(OUTPUT).pfs0	:	$(OUTPUT).nso $(OUTPUT).npdm
+endif
+
+$(OUTPUT).nso	:	$(OUTPUT).elf
 
 ifeq ($(strip $(NO_NACP)),)
 $(OUTPUT).nro	:	$(OUTPUT).elf $(OUTPUT).nacp
 else
 $(OUTPUT).nro	:	$(OUTPUT).elf
-endif
-
-else
-
-all	:	$(OUTPUT).nsp
-
-$(OUTPUT).nsp	:	$(OUTPUT).nso $(OUTPUT).npdm
-
-$(OUTPUT).nso	:	$(OUTPUT).elf
-
 endif
 
 $(OUTPUT).elf	:	$(OFILES)
