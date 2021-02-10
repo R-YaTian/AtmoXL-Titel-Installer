@@ -185,7 +185,7 @@ ifeq ($(strip $(APP_JSON)),)
 	@rm -fr $(BUILD) $(TARGET).nro $(TARGET).nacp $(TARGET).elf
 else
 	@$(MAKE) --no-print-directory -C include/Plutonium/Plutonium -f Makefile clean
-	@rm -fr $(BUILD) $(TARGET).nsp $(TARGET).nso $(TARGET).npdm $(TARGET).elf
+	@rm -fr $(BUILD) $(TARGET).pfs0 $(TARGET).nso $(TARGET).npdm $(TARGET).elf $(TARGET).nacp $(TARGET).nro
 endif
 
 
