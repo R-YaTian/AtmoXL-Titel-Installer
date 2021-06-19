@@ -19,9 +19,7 @@
 
 namespace inst::util {
     void initApp () {
-        // Seethe
-        //if (!pu::IsReiNX()) pu::IsAtmosphere();
-        if (!std::filesystem::exists("sdmc:/switch")) std::filesystem::create_directory("sdmc:/switch");
+        if (!std::filesystem::exists("sdmc:/config")) std::filesystem::create_directory("sdmc:/config");
         if (!std::filesystem::exists(inst::config::appDir)) std::filesystem::create_directory(inst::config::appDir);
         inst::config::parseConfig();
 
