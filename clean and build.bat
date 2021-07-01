@@ -4,6 +4,7 @@ make
 cp *.nacp ./hacBrewPack/control/control.nacp
 cp -r ./build/exefs ./hacBrewPack
 cd ./hacBrewPack
+.\PatchTool ./control/control.nacp nacp.ips ./control/control.nacp
 .\hacbrewpack --romfsdir ../romfs --nspdir ../ --keygeneration 3
 del exefs /Q
 rd exefs
