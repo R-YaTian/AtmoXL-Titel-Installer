@@ -31,7 +31,7 @@
             "title": "不支援Applet模式",
             "desc": "您可以嘗試在“Applet模式”下使用本程式,但如果出現問題請切換到“非Applet模式”再運行。\n切換方法：\n 退回系統桌面選中任意一個遊戲，按住\ue0e5後點\ue0e0進入遊戲，直到跳回hbmenu界面再鬆開按鈕!\n然後再選擇AtmoXL-Titel-Installer，屆時將不會彈出此對話框！"
         },
-        "buttons": "\ue0e0 選擇 \ue0e1 退出"
+        "buttons": "\ue0e0 選擇 \ue0ef 退出"
     },
     "inst": {
         "net": {
