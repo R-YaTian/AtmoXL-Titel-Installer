@@ -12,6 +12,7 @@
 
 namespace inst::ui {
     extern MainApplication *mainApp;
+    static s32 prev_touchcount = 0;
     bool appletFinished = false;
 
     void mainMenuThread() {
@@ -120,11 +121,12 @@ namespace inst::ui {
     }
 
     void MainPage::onInput(u64 Down, u64 Up, u64 Held, pu::ui::Touch Pos) {
-        if (((Down & HidNpadButton_Plus) || (Down & HidNpadButton_Minus) || (Down & HidNpadButton_B)) && mainApp->IsShown()) {
+        if ((Down & HidNpadButton_Plus) || (Down & HidNpadButton_Minus)) {
             mainApp->FadeOut();
             mainApp->Close();
         }
-        if ((Down & HidNpadButton_A) || (Up & KEY_TOUCH)) {
+        if ((Down & HidNpadButton_A) || (pu::ui::Application::GetTouchState().count == 0 && prev_touchcount == 1)) {
+            prev_touchcount = 0;
             switch (this->optionMenu->GetSelectedIndex()) {
                 case 0:
                     this->installMenuItem_Click();
@@ -148,5 +150,7 @@ namespace inst::ui {
                     break;
             }
         }
+        if (pu::ui::Application::GetTouchState().count == 1)
+            prev_touchcount = 1;
     }
 }
