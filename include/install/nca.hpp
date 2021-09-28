@@ -6,6 +6,24 @@
 #define MAGIC_NCA3 0x3341434E /* "NCA3" */
 namespace tin::install
 {
+    struct NcaBucketInfo {
+        static constexpr size_t HeaderSize = 0x10;
+        s64 offset;
+        s64 size;
+        u8 header[HeaderSize];
+    };
+
+    static_assert(sizeof(NcaBucketInfo) == 0x20, "NcaBucketInfo must be 0x20");
+
+    struct NcaSparseInfo {
+        NcaBucketInfo bucket;
+        s64 physical_offset;
+        u16 generation;
+        u8  reserved[6];
+    };
+
+    static_assert(sizeof(NcaSparseInfo) == 0x30, "NcaSparseInfo must be 0x30");
+
     struct NcaFsHeader
     {
         u16 version;
@@ -27,7 +45,7 @@ namespace tin::install
                 u32 section_ctr_high;
             };
         };
-        u8 sparse_info[0x30]; /* only used in sections with sparse storage. */
+        NcaSparseInfo sparse_info; /* only used in sections with sparse storage. */
         u8 _0x178[0x88]; /* Padding. */
     } PACKED;
 
