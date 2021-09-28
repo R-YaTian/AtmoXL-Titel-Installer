@@ -11,8 +11,13 @@
   "is_64_bit": true,
   "address_space_type": 1,
   "is_retail": true,
+  "system_resource_size": "0x1FE00000",
+  "disable_device_address_space_merge": false,
   "filesystem_access": {
-    "permissions": "0xFFFFFFFFFFFFFFFF"
+    "permissions": "0xFFFFFFFFFFFFFFFF",
+    "content_owner_ids": [
+      "0x0100000000001000"
+    ]
   },
   "service_host": [
     "*"
@@ -79,7 +84,7 @@
         "svcFlushDataCache": "0x2B",
         "svcMapPhysicalMemory": "0x2C",
         "svcUnmapPhysicalMemory": "0x2D",
-        "svcGetFutureThreadInfo": "0x2E",
+        "svcGetDebugFutureThreadInfo": "0x2E",
         "svcGetLastThreadInfo": "0x2F",
         "svcGetResourceLimitLimitValue": "0x30",
         "svcGetResourceLimitCurrentValue": "0x31",
@@ -87,14 +92,14 @@
         "svcGetThreadContext3": "0x33",
         "svcWaitForAddress": "0x34",
         "svcSignalToAddress": "0x35",
-        "svcUnknown36": "0x36",
-        "svcUnknown37": "0x37",
+        "svcSynchronizePreemptionState": "0x36",
+        "svcGetResourceLimitPeakValue": "0x37",
         "svcUnknown38": "0x38",
         "svcUnknown39": "0x39",
         "svcUnknown3a": "0x3A",
         "svcUnknown3b": "0x3B",
-        "svcDumpInfo": "0x3C",
-        "svcDumpInfoNew": "0x3D",
+        "svcKernelDebug": "0x3C",
+        "svcChangeKernelTraceState": "0x3D",
         "svcUnknown3e": "0x3E",
         "svcUnknown3f": "0x3F",
         "svcCreateSession": "0x40",
@@ -116,6 +121,7 @@
         "svcCreateSharedMemory": "0x50",
         "svcMapTransferMemory": "0x51",
         "svcUnmapTransferMemory": "0x52",
+        "svcQueryIoMapping": "0x55",
         "svcDebugActiveProcess": "0x60",
         "svcBreakDebugProcess": "0x61",
         "svcTerminateDebugProcess": "0x62",
@@ -130,6 +136,7 @@
         "svcWriteDebugProcessMemory": "0x6B",
         "svcSetHardwareBreakPoint": "0x6C",
         "svcGetDebugThreadParam": "0x6D",
+        "svcGetSystemInfo": "0x6F",
         "svcConnectToPort": "0x72",
         "svcSetProcessMemoryPermission": "0x73",
         "svcMapProcessMemory": "0x74",
